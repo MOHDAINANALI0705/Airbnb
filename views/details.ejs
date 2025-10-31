@@ -1,0 +1,46 @@
+<%- include('./partials/head')%>
+<%- include('./partials/nav')%>
+<main style="display: flex; justify-content: center; align-items: center; min-height: 100vh; background-color: #f3f4f6;">
+  <div>
+    <!-- Image & Description Section -->
+    <div style="width: 100%; background: #e5e7eb; display: flex; flex-direction: column; align-items: center; @media (min-width: 768px) {width: 50%;}">
+      <img src="<%= home.photoURL %>" alt="<%= home.name %>" style="width: 40rem; height: 25rem; object-fit: cover; border-radius: 0.5rem; margin-top: 1.5rem; margin-bottom: 1rem; box-shadow: 0 2px 8px rgba(0,0,0,0.12);">
+      <div style="padding: 1rem; width: 100%;">
+        <h3 style="font-size: 1.25rem; font-weight: 600; margin-bottom: 0.25rem;">Description</h3>
+        <div style="background: #fff; border-radius: 0.5rem; box-shadow: 0 1px 4px rgba(0,0,0,0.08); padding: 1rem 1.25rem; margin-top: 0.5rem;">
+          <p style="color: #374151; font-size: 1rem; line-height: 1.6; font-weight: 500; letter-spacing: 0.01em;">
+            <%= home.description%>
+          </p>
+        </div>
+      </div>
+    </div>
+    <!-- Details Section -->
+    <div style="width: 100%; padding: 2rem; display: flex; flex-direction: column; justify-content: space-between; @media (min-width: 768px) {width: 50%;}">
+      <div>
+        <h2 style="font-size: 1.875rem; color: #ef4444; font-weight: 700; margin-bottom: 1rem;">
+          <%= home.homename %>
+        </h2>
+        <div style="margin-bottom: 1.5rem;">
+          <h3 style="font-size: 1.25rem; font-weight: 600; margin-bottom: 0.25rem;">Location</h3>
+          <p style="color: #4b5563; font-size: 0.875rem;"><%= home.location %></p>
+        </div>
+        <div style="margin-bottom: 1.5rem; display: flex; align-items: center; justify-content: space-between;">
+          <div>
+            <h3 style="font-size: 1.25rem; font-weight: 600; margin-bottom: 0.25rem;">Price</h3>
+            <p style="color: #16a34a; font-size: 1.125rem; font-weight: 700;">$<%= home.price %> <span style="color: #6b7280; font-weight: 400; font-size: 0.875rem;">/ night</span></p>
+          </div>
+          <div>
+            <h3 style="font-size: 1.25rem; font-weight: 600; margin-bottom: 0.25rem;">Rating</h3>
+            <div style="display: flex; align-items: center;">
+              <span style="color: #facc15; font-size: 1.5rem;">★</span>
+              <span style="margin-left: 0.5rem; font-size: 1.125rem; font-weight: 500;"><%= home.rating %> / 5</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <%- include('./partials/addwishlist')%>
+      </div>
+    </div>
+  </div>
+</main>

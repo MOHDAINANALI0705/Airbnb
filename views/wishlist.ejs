@@ -1,0 +1,50 @@
+<%- include('./partials/head')%>
+<%- include('./partials/nav')%>
+<div style="display: flex; flex-wrap: wrap; gap: 32px; justify-content: center; margin-top: 40px; background: #f7f7f7; padding: 40px 0;"></div>
+  <% details.forEach(detail => { %>
+    <form action="/wishlist" method="GET" style="background: linear-gradient(135deg, #fff 80%, #f0f4ff 100%); border-radius: 16px; box-shadow: 0 6px 24px rgba(34,34,34,0.10); width: 340px; padding: 28px 22px 22px 22px; display: flex; flex-direction: column; align-items: center; transition: box-shadow 0.2s; margin-bottom: 20px; border: 1px solid #e3e6ee;">
+      <input type="hidden" name="id" value="<%= detail._id %>">
+      <div style="width: 100%; height: 190px; background: #e6eaf3; border-radius: 10px; overflow: hidden; display: flex; align-items: center; justify-content: center; margin-bottom: 18px;">
+        <% if (detail.photoURL) { %>
+          <img src="<%= detail.photoURL %>" alt="<%= detail.housename %>" style="width: 100%; height: 100%; object-fit: cover;">
+        <% } else { %>
+          <span style="color: #b0b6c1; font-size: 1.1em;">No Image</span>
+        <% } %>
+      </div>
+      <div style="font-weight: 700; color: #1a2233; font-size: 1.25em; margin-bottom: 10px; text-align: center; letter-spacing: 0.5px;"><%= detail.housename %></div>
+       <div style="color: #3a4668; font-size: 1.05em; margin-bottom: 8px;"> <span style="font-weight: 600; color: #2d7efb;"><%= detail.location %></span></div>
+      <div style="color: #3a4668; font-size: 1.05em; margin-bottom: 8px;">Price: <span style="font-weight: 600; color: #2d7efb;"><%= detail.price %></span></div>
+      <div style="display: flex; align-items: center; margin-bottom: 8px;">
+        <span style="color: #ffb400; font-size: 1.1em; margin-right: 6px;">
+          <% 
+            const fullStars = Math.floor(detail.ratings);
+            const halfStar = (detail.ratings % 1) >= 0.5;
+            const emptyStars = 5 - fullStars - (halfStar ? 1 : 0);
+            for(let i=0; i<fullStars; i++) { %>
+              &#9733;
+          <% } %>
+          <% if(halfStar) { %>
+              <span style="position: relative; display: inline-block; width: 1em;">
+                <span style="position: absolute; width: 50%; overflow: hidden; color: #ffb400;">&#9733;</span>
+                <span style="color: #e0e0e0;">&#9733;</span>
+              </span>
+          <% } %>
+          <% for(let i=0; i<emptyStars; i++) { %>
+              <span style="color: #e0e0e0;">&#9733;</span>
+          <% } %>
+        </span>
+        <span style="color: #6b7280; font-size: 1em; font-weight: 500;">(<%= detail.ratings %>)</span>
+      </div>
+      <form action="/remove-home/<%= detail._id%>" method="POST" style="display: inline;">
+      <div type="submit" class="remove-btn" style="color: #e53e3e; font-weight: 600; cursor: pointer; margin-top: 10px; padding: 6px 16px; border-radius: 6px; transition: background 0.2s;">
+        Remove
+      </div>
+    </form>
+      <style>
+        .remove-btn:hover {
+          background: #ffe5e5;
+        }
+      </style>
+    </form>
+  <% }); %>
+</div>
