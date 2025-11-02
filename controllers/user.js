@@ -49,7 +49,7 @@ exports.AddToWishlist = (req, res, next) => {
   });
 
     exports.removeHome = (req, res, next) => {
-      const homeId = req.params.id;
+      const homeId = req.params.Id;
       wishlist.deleteById(homeId).then((result) => {
         console.log("Deleted from wishlist");
   }).finally(() => {
