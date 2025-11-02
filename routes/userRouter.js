@@ -10,7 +10,7 @@ userRouter.get("/homes",userController.ShowHomepage);
 userRouter.get("/home/:ID",userController.ShowDetails);
 userRouter.post("/wishlist",userController.AddToWishlist);
 userRouter.get("/wishlist",userController.showWishlist);
-userRouter.get("/remove-home/:Id",userController.removeHome);
+// userRouter.get("/remove-home/:Id",userController.removeHome);
 
 
 module.exports = userRouter;
