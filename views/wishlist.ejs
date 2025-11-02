@@ -2,7 +2,7 @@
 <%- include('./partials/nav')%>
 <div style="display: flex; flex-wrap: wrap; gap: 32px; justify-content: center; margin-top: 40px; background: #f7f7f7; padding: 40px 0;"></div>
   <% details.forEach(detail => { %>
-    <form action="/wishlist" method="GET" style="background: linear-gradient(135deg, #fff 80%, #f0f4ff 100%); border-radius: 16px; box-shadow: 0 6px 24px rgba(34,34,34,0.10); width: 340px; padding: 28px 22px 22px 22px; display: flex; flex-direction: column; align-items: center; transition: box-shadow 0.2s; margin-bottom: 20px; border: 1px solid #e3e6ee;">
+    <div style="background: linear-gradient(135deg, #fff 80%, #f0f4ff 100%); border-radius: 16px; box-shadow: 0 6px 24px rgba(34,34,34,0.10); width: 340px; padding: 28px 22px 22px 22px; display: flex; flex-direction: column; align-items: center; transition: box-shadow 0.2s; margin-bottom: 20px; border: 1px solid #e3e6ee;">
       <input type="hidden" name="id" value="<%= detail._id %>">
       <div style="width: 100%; height: 190px; background: #e6eaf3; border-radius: 10px; overflow: hidden; display: flex; align-items: center; justify-content: center; margin-bottom: 18px;">
         <% if (detail.photoURL) { %>
@@ -35,7 +35,7 @@
         </span>
         <span style="color: #6b7280; font-size: 1em; font-weight: 500;">(<%= detail.ratings %>)</span>
       </div>
-      <form action="/remove-home/<%= detail._id%>" method="POST" style="display: inline;">
+      <form action="/wishlist/remove/<%= detail._id %>" method="POST" style="display: inline;">
       <div type="submit" class="remove-btn" style="color: #e53e3e; font-weight: 600; cursor: pointer; margin-top: 10px; padding: 6px 16px; border-radius: 6px; transition: background 0.2s;">
         Remove
       </div>
@@ -45,6 +45,6 @@
           background: #ffe5e5;
         }
       </style>
-    </form>
+    </div>
   <% }); %>
 </div>
