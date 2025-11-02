@@ -61,3 +61,13 @@ exports.postDeleteHome=(req,res,next)=>{
     console.log(error);
   }); 
 }
+
+exports.RemoveHome = (req, res, next) => {
+      console.log(req.params.ID);
+      const homeId = req.params.ID;
+      Wishlist.deleteById(homeId).then((result) => {
+        console.log("Deleted from wishlist");
+  }).finally(() => {
+        res.redirect("/wishlist");
+      });
+    }
